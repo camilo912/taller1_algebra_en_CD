@@ -1,24 +1,24 @@
-A = readmatrix('data.txt')
+A = readmatrix('data.txt');
 data =  A(:,2:101);
 rowMean = (mean(data'))';
 %% Datos Binarios
 
 binMean = (rowMean > 0);
-X = zeros(1,100)
-binData = data > X
+X = zeros(1,100);
+binData = data > X;
 
 %% Jaccard ejemplo
 a = binMean.*binData;
 aa = sum(a == ones(1,100));
-b = binMean < binData
+b = binMean < binData;
 bb = sum(b == ones(1,100));
-c = binMean > binData
+c = binMean > binData;
 cc = sum(c == ones(1,100));
-d = (binMean+binData)
+d = (binMean+binData);
 dd = sum(d == zeros(1,100));
-result_jaccard = aa./(aa+bb+cc)
-result_pearson = ((aa.*dd)-(bb.*cc))./sqrt(((aa+cc).*(bb+dd).*(aa+bb).*(cc+dd)))
-result_dice = 2.*(aa)./(2.*aa+bb+cc)
+result_jaccard = aa./(aa+bb+cc);
+result_pearson = ((aa.*dd)-(bb.*cc))./sqrt(((aa+cc).*(bb+dd).*(aa+bb).*(cc+dd)));
+result_dice = 2.*(aa)./(2.*aa+bb+cc);
 %% se añaden las distancias con su correspondiente activo
 jaccard_with_id = [];
 pearson_with_id = [];
