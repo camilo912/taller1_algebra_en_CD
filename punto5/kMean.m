@@ -1,7 +1,7 @@
 function [centroids, idx] = kMean(X, initial_centroids, max_iters, p, plot)
-%KMEAN ejecucción del algoritmo de kMeans en la matrix de datos, donde cada
+%KMEAN ejecucciï¿½n del algoritmo de kMeans en la matrix de datos, donde cada
 %de X es un muestra.
-%   Usando los centroides iniciales, el numéro máximo de iteraciones y
+%   Usando los centroides iniciales, el numï¿½ro mï¿½ximo de iteraciones y
 %   plot, la variable graficar el progreso.
 
 % para controlar la grafica del algoritmo.
@@ -19,16 +19,21 @@ end
 K = size(initial_centroids, 1);
 centroids = initial_centroids;
 previous_centroids = centroids;
-idx = zeros(m, 1);
 
 for i = 1:max_iters
-    fprintf('K-Means iteración %d/%d...\n', i, max_iters);
+    idx = zeros(m, 1);
+    fprintf('K-Means iteraciï¿½n %d/%d...\n', i, max_iters);
     drawnow('update')
     
-    % para computar los centroides más cercanos
-    idx = findClosestCentroids(X, centroids, p);
+    % para computar los centroides mï¿½s cercanos
+%     idx = findClosestCentroids(X, centroids, p);
+
+    for j=1:m
+        idx(j) = encontrarCentroide(j, X, centroids, p);
+        centroids(idx(j), :) = calcularCentroide(X(idx == idx(j), :));
+    end
     
-    % para controlar la gráfica del progreso de kmean
+    % para controlar la grï¿½fica del progreso de kmean
     if plot
         plotKMeans(X, centroids, previous_centroids, idx, K, i);
         previous_centroids = centroids;
@@ -38,7 +43,7 @@ for i = 1:max_iters
     
     %
     % para computar nuevos centroides
-    centroids = computeCentroids(X, idx, K);
+%     centroids = computeCentroids(X, idx, K);
 end
 
 if plot
