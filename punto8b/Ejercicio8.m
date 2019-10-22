@@ -30,13 +30,13 @@ for i=1:100
 end
 %% Activos mas parecidos
 salida1 = sortrows(jaccard_with_id,2);
-salida1(1:10,:)
+minPDJ = salida1(1:10,:)
 salida2 = sortrows(pearson_with_id,2);
-salida2(90:100,:)
+minPDP = salida2(90:100,:)
 salida3 = sortrows(dice_with_id,2);
-salida3(1:10,:)
+minPDD = salida3(1:10,:)
 %% Activos menos parecidos
-salida1(90:100,:)
-salida2(1:10,:)
-salida3(90:100,:)
+maxPDJ = salida1(90:100,:)
+maxPDP = salida2(1:10,:)
+maxPDD =salida3(90:100,:)
 
