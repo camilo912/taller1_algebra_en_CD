@@ -1,5 +1,5 @@
 
-function [centroids, idx] = punto5(K, max_iters, p, plot,randomK)
+function [centroids, idx, J, c] = punto5(K, max_iters, p, plot,randomK)
 %PUNTO5 Ejecuta el algoritmo de k-means, siendo los inputs K: el número de
 %grupos, p la distancia y max_iters, el número de iteraciones.
 
@@ -25,7 +25,7 @@ if randomK
 end
 
 % para realizar el clustering de los datos a los centroides.
-[centroids, idx] = kMean(data, initial_centroids, max_iters, p, plot);
+[centroids, idx, J, c] = kMean(data, initial_centroids, max_iters, p, plot);
 
 % para cerrar la ventana de plot abierta.
 close;
