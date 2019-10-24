@@ -34,4 +34,3 @@ close all;
 end
 
 %% ejecucion
-[maxPDP,minPDP, maxPDJ, minPDJ, maxPDD,minPDD] = punto8(portfolio,673)

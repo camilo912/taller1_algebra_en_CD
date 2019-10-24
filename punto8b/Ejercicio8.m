@@ -26,7 +26,7 @@ dice_with_id = [];
 for i=1:100
     jaccard_with_id = [jaccard_with_id;[i result_jaccard(1,i)]];
     pearson_with_id = [pearson_with_id; [i result_pearson(1,i)]];
-    dice_with_id = [dice_with_id; [i result_dice(1,i)]];
+    dice    _with_id = [dice_with_id; [i result_dice(1,i)]];
 end
 %% Activos mas parecidos
 salida1 = sortrows(jaccard_with_id,2);
