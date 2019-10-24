@@ -6,7 +6,7 @@ function punto13(X)
 %n_datos = size(X,1);
 
 % inicial
-n_cond = cond(X);
+n_cond = cond(cov(X));
 fprintf('#condición inicial: %6.4f \n', n_cond);
 
 % usando "discrete inverse theory", con el Marquardt-Levenberg coefficient
@@ -15,7 +15,7 @@ fprintf('#condición inicial: %6.4f \n', n_cond);
 % aunque si el c es muy grande, se puede alejar, de la verdadera solución.
 c = 150;
 X_new = X + c*eye(size(X));
-n_disc_cond = cond(X_new);
+n_disc_cond = cond(cov(X_new));
 fprintf('#condición Marquardt-Levenberg: %6.4f \n', n_disc_cond);
 
 % usando algorithm de Ledoit y Wolf Shrinkage
@@ -28,7 +28,8 @@ fprintf('#condición Ledoit-wolf: %6.4f \n', n_cond_lw);
 % las dimensiones sean ortogonales (linearmente independientes) y rankeadas
 % seg'un la varianza de los datos.
 M = pca(X);
-n_cond_pca = cond(M);
+disp(M);
+n_cond_pca = cond(cov(X*M));
 fprintf('#condición PCA: %6.4f \n', n_cond_pca);
 
 end
