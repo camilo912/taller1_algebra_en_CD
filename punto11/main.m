@@ -1,7 +1,7 @@
 % p='fro';
 p=inf;
 tam = 256;
-carp = "./fotos_interactiva/"
+carp = "./fotos_interactiva/";
 names = dir(carp);
 n = size(names);
 n = n(1);

@@ -1,9 +1,10 @@
 % p='fro';
 p=inf;
 % query = nombre de imagen de la persona
-query = "camilo";
+query = "1A";
 tam = 256;
-names = dir("*");
+carp = "./fotos_interactiva/";
+names = dir(carp);
 n = size(names);
 n = n(1);
 imgs = single(zeros(n, tam, tam));
@@ -14,7 +15,8 @@ while i<=n
         n = n-1;
         i = i-1;
     else
-        img = rgb2gray(imread(names(i).name));
+        % img = rgb2gray(imread(strcat(names(i).name)));
+        img = rgb2gray(imread(strcat(carp, names(i).name)));
         img = single(imresize(img, [tam, tam]));
         imgs(i, :, :) = img;
     end
@@ -36,7 +38,7 @@ for i=1:n
 end
 
 idx = find(distances == min(distances));
-img = imread(names(idx).name);
+img = rgb2gray(imread(strcat(carp, names(idx).name)));
 hAxes = axes( figure );
 hImage = imshow( img, 'Parent', hAxes );
 title( hAxes,  names(idx).name);
@@ -49,7 +51,7 @@ lista = sortrows(lista, 1);
 lista = lista(1:5, 2);
 
 for i=1:5
-    img = imread(names(lista(i)).name);
+    img = rgb2gray(imread(strcat(carp, names(i).name)));
     hAxes = axes( figure );
     hImage = imshow( img, 'Parent', hAxes );
     title( hAxes,  names(lista(i)).name);
