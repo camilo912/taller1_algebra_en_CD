@@ -2,10 +2,12 @@ data = read_data();
 data_b = data >= 0;
 medias = mean(data_b);
 medias_b = medias >= 0;
-S = cov(data_b);
-dm = sqrt(diag((data_b-medias_b)*inv(S)*(data_b-medias_b)'));
-l = prctile(dm, 95);
-out = find(dm>=l);
+dist = zeros(size(data, 1), 1);
+for i=1:size(data, 1)
+    dist(i) = 1 - sum(data_b(i, :) & medias_b) / sum(data_b(i, :) | medias_b);
+end
+l = prctile(dist, 95);
+out = find(dist>=l);
 
 %%
 % comparar con outliers del punto7, para esto es necesario tener cargado en
@@ -38,15 +40,3 @@ for j=1:size(out,1)
         mismos(4) = mismos(4)+1;
     end
 end
-%%
-% z = zeros(1,100)
-% bindata = x1 >= z
-% covarianza3 = cov(bindata)
-% icov3 = inv(covarianza3)
-% xmean3 = mean(bindata)
-% binMean = xmean3 >= 0.5
-% x_minus_m3 = (bindata-binMean)
-% distancia3 = (x_minus_m3)*icov3*(x_minus_m3)'
-% mahal3 = sqrt(diag(distancia3))
-% C3=prctile(mahal3,95)
-% Ibin=find(mahal3>=C3);

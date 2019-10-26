@@ -8,9 +8,14 @@ while 1
         IP_a = IP;
     end
     IP=IG+1000/(i);
-    if i <= 10 || i == 1000
-        imshow(cast(IP, 'uint8'))
-    end
+%     if i <= 10
+%         subplot(2, 5, i);
+%         imshow(cast(IP, 'uint8'))
+%     end
+%     if i == 1000
+%         subplot(1,1,1)
+%         imshow(cast(IP, 'uint8'))
+%     end
     if i > 1
         diff = IP_a - IP;
         d = norm(double(diff), p);
@@ -31,9 +36,9 @@ while 1
         IP_a = IP;
     end
     IP=IG+10/(i);
-    if i <= 10 || i == 1000
-        imshow(cast(IP, 'uint8'))
-    end
+%     if i <= 10 || i == 1000
+%         imshow(cast(IP, 'uint8'))
+%     end
     if i > 1
         diff = IP_a - IP;
         d = norm(double(diff), p);
@@ -54,9 +59,6 @@ while 1
         IP_a = IP;
     end
     IP=IG+1000/(i);
-    if i <= 10 || i == 1000
-        imshow(cast(IP, 'uint8'))
-    end
     if i > 1
         diff = IP_a - IP;
         d = norm(double(diff), p);
@@ -77,9 +79,6 @@ while 1
         IP_a = IP;
     end
     IP=IG+1000/(i);
-    if i <= 10 || i == 1000
-        imshow(cast(IP, 'uint8'))
-    end
     if i > 1
         diff = IP_a - IP;
         d = norm(double(diff), p);

@@ -12,8 +12,8 @@ function [sigma,shrinkage]=cov1para(x,shrink)
 % de-mean returns
 %%%%%%%%%%%%%%%%%%%%%%%%%esto hay que activarlos%%%%%%%%%%%%%%%%%%%%%%%%
 [t,n]=size(x);
-%%meanx=mean(x);
-%%x=x-meanx(ones(t,1),:);
+meanx=mean(x);
+x=x-meanx(ones(t,1),:);
 
 % compute sample covariance matrix
 sample=(1/t).*(x'*x);

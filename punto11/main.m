@@ -1,5 +1,5 @@
-% p='fro';
-p=inf;
+p='fro';
+% p=inf;
 tam = 256;
 carp = "./fotos_interactiva/";
 names = dir(carp);

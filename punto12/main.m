@@ -1,5 +1,5 @@
-% p='fro';
-p=inf;
+p='fro';
+% p=inf;
 % query = nombre de imagen de la persona
 query = "1A";
 tam = 256;
@@ -48,11 +48,10 @@ title( hAxes,  names(idx).name);
 
 lista = [distances, (1:n)'];
 lista = sortrows(lista, 1);
-lista = lista(1:5, 2);
+lista = lista(2:6, 2);
 
 for i=1:5
-    img = rgb2gray(imread(strcat(carp, names(i).name)));
-    hAxes = axes( figure );
-    hImage = imshow( img, 'Parent', hAxes );
-    title( hAxes,  names(lista(i)).name);
+    subplot(1,5,i);
+    img = rgb2gray(imread(strcat(carp, names(lista(i)).name)));
+    imshow(img);
 end
